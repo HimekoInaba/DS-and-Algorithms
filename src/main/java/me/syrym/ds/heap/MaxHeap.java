@@ -20,6 +20,44 @@ public class MaxHeap<E extends Comparable<E>> {
         trickleUp(lastPos);
     }
 
+    /**
+     * removes root (max element) and returns it
+     * @return root
+     */
+    public E remove() {
+        E root = elements.get(0);
+        swap(0, lastPos--);
+        trickleDown(0);
+        return root;
+    }
+
+    private void trickleDown(int parentPos) {
+        int left = 2 * parentPos + 1;
+        int right = 2 * parentPos + 2;
+
+        if (left == lastPos && elements.get(left).compareTo(elements.get(parentPos)) > 0) {
+            swap(left, parentPos);
+            return;
+        }
+
+        if (right == lastPos && elements.get(right).compareTo(elements.get(parentPos)) > 0) {
+            swap(right, parentPos);
+            return;
+        }
+
+        if (right >= lastPos || left >= lastPos) {
+            return;
+        }
+
+        if (elements.get(left).compareTo(elements.get(parentPos)) > 0) {
+            swap(left, parentPos);
+            trickleDown(left);
+        } else if (elements.get(right).compareTo(elements.get(parentPos)) > 0) {
+            swap(right, parentPos);
+            trickleDown(right);
+        }
+    }
+
     private void trickleUp(int pos) {
         if (pos == 0) {
             return;
