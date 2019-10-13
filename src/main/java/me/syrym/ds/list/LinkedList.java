@@ -68,4 +68,47 @@ public class LinkedList<E> {
         }
         return tail.data;
     }
+
+    public E removeFirst() {
+        if (head == null) {
+            throw new NoSuchElementException("List is empty!");
+        }
+
+        if (head == tail) {
+            E node = head.data;
+            head = null;
+            tail = null;
+            size--;
+            return node;
+        }
+
+        E node = head.data;
+        head = head.next;
+        size--;
+        return node;
+    }
+
+    public E removeLast() {
+        if (head == null) {
+            throw new NoSuchElementException("List is empty!");
+        }
+
+        if (head == tail) {
+            return removeFirst();
+        }
+
+        Node<E> curr = head;
+        Node<E> prev = null;
+
+        while (curr != tail) {
+            prev = curr;
+            curr = curr.next;
+        }
+
+        E node = tail.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return node;
+    }
 }

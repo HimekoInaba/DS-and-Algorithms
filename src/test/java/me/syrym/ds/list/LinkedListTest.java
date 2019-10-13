@@ -45,4 +45,22 @@ public class LinkedListTest {
         Assert.assertEquals(new Integer(1), list.getFirst());
         Assert.assertEquals(new Integer(3), list.getLast());
     }
+
+    @Test
+    public void removeFirstTest() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        Integer removed = list.removeFirst();
+        Assert.assertEquals(new Integer(1), removed);
+    }
+
+    @Test
+    public void removeLastTest() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        Integer removed = list.removeLast();
+        Assert.assertEquals(new Integer(3), removed);
+    }
 }
