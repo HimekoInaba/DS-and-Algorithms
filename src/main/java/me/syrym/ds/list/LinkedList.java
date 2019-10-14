@@ -3,14 +3,19 @@ package me.syrym.ds.list;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @NoArgsConstructor
-public class LinkedList<E extends Comparable<E>> {
+public class LinkedList<E extends Comparable<E>> implements Iterable<E> {
     private Node<E> head;
     private Node<E> tail;
     @Getter
     private int size;
+
+    public Iterator<E> iterator() {
+        return new IteratorImpl();
+    }
 
     private static class Node<E> {
         E data;
@@ -144,5 +149,26 @@ public class LinkedList<E extends Comparable<E>> {
             current = current.next;
         }
         return false;
+    }
+
+    private class IteratorImpl implements Iterator<E> {
+        private Node<E> current;
+
+        IteratorImpl() {
+            this.current = head;
+        }
+
+        public boolean hasNext() {
+            return this.current != null;
+        }
+
+        public E next() {
+            if (!hasNext()) {
+                throw new RuntimeException("There is no more elements in the list!");
+            }
+            E element = current.data;
+            current = current.next;
+            return element;
+        }
     }
 }
