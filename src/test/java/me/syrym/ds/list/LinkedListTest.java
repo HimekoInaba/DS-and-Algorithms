@@ -63,4 +63,35 @@ public class LinkedListTest {
         Integer removed = list.removeLast();
         Assert.assertEquals(new Integer(3), removed);
     }
+
+    @Test
+    public void removeTest() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+        Integer removed = list.remove(3);
+        Assert.assertEquals(new Integer(3), removed);
+    }
+
+    @Test
+    public void containsTest_whenElementIsPresent() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+        Assert.assertTrue(list.contains(3));
+    }
+
+    @Test
+    public void containsTest_whenElementIsNotPresent() {
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+        Assert.assertFalse(list.contains(8));
+    }
 }

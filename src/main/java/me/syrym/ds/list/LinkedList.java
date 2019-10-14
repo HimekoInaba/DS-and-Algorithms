@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import java.util.NoSuchElementException;
 
 @NoArgsConstructor
-public class LinkedList<E> {
+public class LinkedList<E extends Comparable<E>> {
     private Node<E> head;
     private Node<E> tail;
     @Getter
@@ -110,5 +110,39 @@ public class LinkedList<E> {
         tail = prev;
         size--;
         return node;
+    }
+
+    public E remove(E obj) {
+        Node<E> current = head, prev = null;
+        while (current != null) {
+            if ((current.data.compareTo(obj) == 0)) {
+                if (current == head) {
+                    return removeFirst();
+                }
+
+                if (current == tail) {
+                    return removeLast();
+                }
+
+                size--;
+                prev.next = current.next;
+                return current.data;
+            }
+            prev = current;
+            current = current.next;
+        }
+
+        throw new RuntimeException(String.format("Element %s is absent in list!", obj.toString()));
+    }
+
+    public boolean contains(E obj) {
+        Node<E> current = head;
+        while (current != null) {
+            if (current.data.compareTo(obj) == 0) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
     }
 }
