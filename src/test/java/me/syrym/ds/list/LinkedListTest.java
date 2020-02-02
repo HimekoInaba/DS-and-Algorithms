@@ -16,14 +16,14 @@ public class LinkedListTest {
     public void addFirstTest_ifHeadIsNull() {
         list.addFirst(1);
         Assert.assertEquals(1, list.getSize());
-        Assert.assertEquals(new Integer(1), list.getFirst());
+        Assert.assertEquals(Integer.valueOf(1), list.getFirst());
     }
 
     @Test
     public void addLastTest_ifHeadIsNull() {
         list.addLast(1);
         Assert.assertEquals(1, list.getSize());
-        Assert.assertEquals(new Integer(1), list.getLast());
+        Assert.assertEquals(Integer.valueOf(1), list.getLast());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class LinkedListTest {
         list.addFirst(2);
         list.addFirst(3);
         Assert.assertEquals(3, list.getSize());
-        Assert.assertEquals(new Integer(1), list.getLast());
-        Assert.assertEquals(new Integer(3), list.getFirst());
+        Assert.assertEquals(Integer.valueOf(1), list.getLast());
+        Assert.assertEquals(Integer.valueOf(3), list.getFirst());
     }
 
     @Test
@@ -42,8 +42,8 @@ public class LinkedListTest {
         list.addLast(2);
         list.addLast(3);
         Assert.assertEquals(3, list.getSize());
-        Assert.assertEquals(new Integer(1), list.getFirst());
-        Assert.assertEquals(new Integer(3), list.getLast());
+        Assert.assertEquals(Integer.valueOf(1), list.getFirst());
+        Assert.assertEquals(Integer.valueOf(3), list.getLast());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class LinkedListTest {
         list.addLast(2);
         list.addLast(3);
         Integer removed = list.removeFirst();
-        Assert.assertEquals(new Integer(1), removed);
+        Assert.assertEquals(Integer.valueOf(1), removed);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class LinkedListTest {
         list.addLast(2);
         list.addLast(3);
         Integer removed = list.removeLast();
-        Assert.assertEquals(new Integer(3), removed);
+        Assert.assertEquals(Integer.valueOf(3), removed);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LinkedListTest {
         list.addLast(4);
         list.addLast(5);
         Integer removed = list.remove(3);
-        Assert.assertEquals(new Integer(3), removed);
+        Assert.assertEquals(Integer.valueOf(3), removed);
     }
 
     @Test
