@@ -3,6 +3,7 @@ HELP.md
 /build/
 /target/
 !gradle/wrapper/gradle-wrapper.jar
+.mvn local-settings.xml
 
 ### STS ###
 .apt_generated
