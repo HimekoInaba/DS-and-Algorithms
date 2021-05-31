@@ -1,6 +1,5 @@
-package me.syrym.algorithm.sorting.quicksort;
+package me.syrym.algorithm.sorting;
 
-import me.syrym.algorithm.sorting.qiucksort.Quicksort;
 import org.junit.Assert;
 import org.junit.Test;
 

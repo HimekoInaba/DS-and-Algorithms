@@ -1,4 +1,4 @@
-package me.syrym.algorithm.sorting.qiucksort;
+package me.syrym.algorithm.sorting;
 
 public class Quicksort {
     public static void start(int[] arr) {
