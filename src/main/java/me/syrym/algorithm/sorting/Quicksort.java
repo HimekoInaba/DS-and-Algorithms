@@ -9,25 +9,30 @@ public class Quicksort {
         if (left < right) {
             int pivotFinalRestingPosition = partition(arr, left, right);
 
-            quicksort(arr, left, pivotFinalRestingPosition - 1);
+            quicksort(arr, left, pivotFinalRestingPosition);
             quicksort(arr, pivotFinalRestingPosition + 1, right);
         }
     }
 
     private static int partition(int[] arr, int left, int right) {
-        int pivot = arr[right];
-        int i = left - 1;
+        int pivot = arr[left + (right-left) / 2];
+        int i = left;
+        int j = right;
 
-        for (int j = left; j < right; j++) {
-            if (arr[j] <= pivot) {
+        while (i <= j) {
+            while (arr[i] < pivot) {
                 i++;
-                swap(arr, i, j);
             }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i >= j) {
+                break;
+            }
+            swap(arr, i++, j--);
         }
 
-        swap(arr, i + 1, right);
-
-        return i + 1;
+        return j;
     }
 
     private static void swap(int[] arr, int from, int to) {
